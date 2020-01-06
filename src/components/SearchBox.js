@@ -18,18 +18,20 @@ export default class SearchBox extends Component {
 
 
     render() {
-        const { searchPlaceholder } = this.props;
+        const { searchPlaceholder, results } = this.props;
 
+        const listGroupItems = results.map(result => <ListGroup.Item action>{result}</ListGroup.Item>);
+        
+        // let listGroupItems = [];
+        // for (var i = 0; i < results.length; i++) {
+        //     listGroupItems.push(<ListGroup.Item>{results[i]}</ListGroup.Item>)
+        // }
 
         return (
             <div className="search-box">
                 <Form.Control type="text" placeholder={searchPlaceholder} />
                 <ListGroup className="search-results">
-                    <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                    <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                    <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-                    <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-                    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                    {listGroupItems}
                 </ListGroup>
             </div>
         )

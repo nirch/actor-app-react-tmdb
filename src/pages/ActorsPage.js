@@ -10,7 +10,7 @@ export default class ActorsPage extends Component {
         return (
             <div>
                 <Container>
-                    <SearchBox searchPlaceholder="Search Actor"/>
+                    <SearchBox searchPlaceholder="Search Actor" results={["Brad Pitt", "Tom Jhones"]}/>
                     <h1>bla bla bla</h1>
                 </Container>
             </div>
