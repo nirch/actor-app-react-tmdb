@@ -13,6 +13,7 @@ export default class ActorsPage extends Component {
 
         this.state = {
             actorSearchResults: [],
+            actorSearchResultStrings: [],
             actors: []
         }
 
@@ -34,13 +35,15 @@ export default class ActorsPage extends Component {
 
         if (searchText === "") {
             this.setState({
-                actorSearchResults: []
+                actorSearchResults: [],
+                actorSearchResultStrings: []
             })
         } else {
             const searchURL = "https://api.themoviedb.org/3/search/person?api_key=53d2ee2137cf3228aefae083c8158855&query=" + searchText;
             Axios.get(searchURL).then(response => {
                 this.setState({
-                    actorSearchResults: response.data.results.map(result => result.name)
+                    actorSearchResults: response.data.results,
+                    actorSearchResultStrings: response.data.results.map(result => result.name)
                 })
             });
 
@@ -53,13 +56,17 @@ export default class ActorsPage extends Component {
     }
 
     addActor(index) {
+        const newActor = new ActorModel(this.state.actorSearchResults[index].name, this.state.actorSearchResults[index].profile_path)
+
         this.setState({
-            actors: this.state.actors.concat(new ActorModel("Brad Pitt", "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg"))
-        })
+            actors: this.state.actors.concat(newActor),
+            actorSearchResults: [],
+            actorSearchResultStrings: []
+        });
     }
 
     render() {
-        const { actorSearchResults, actors } = this.state;
+        const { actorSearchResultStrings, actors } = this.state;
 
         const actorComps = actors.map((actor, index) => 
             <Col md={4} key={index}>
@@ -69,7 +76,7 @@ export default class ActorsPage extends Component {
         return (
             <div>
                 <Container>
-                    <SearchBox searchPlaceholder="Search Actor" results={actorSearchResults}
+                    <SearchBox searchPlaceholder="Search Actor" results={actorSearchResultStrings}
                         onSearchChange={this.searchActors} onSelectedResult={this.addActor} />
                     <Row>
                         {actorComps}

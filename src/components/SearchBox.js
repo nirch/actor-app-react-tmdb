@@ -35,6 +35,9 @@ export default class SearchBox extends Component {
 
     handleSelection(ev) {
         this.props.onSelectedResult(parseInt(ev.target.getAttribute("data-index")));
+        this.setState({
+            searchText: ""
+        })
     }
 
     render() {
