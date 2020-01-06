@@ -56,6 +56,8 @@ export default class ActorsPage extends Component {
     }
 
     addActor(index) {
+        // Here I could call another function from TMDB to get additional actor data
+
         const newActor = new ActorModel(this.state.actorSearchResults[index].name, this.state.actorSearchResults[index].profile_path)
 
         this.setState({
