@@ -27,9 +27,16 @@ export default class ActorsPage extends Component {
         //     actorSearchResults: newActorSearchResults
         // })
 
-        this.setState({
-            actorSearchResults: this.state.actorSearchResults.concat(searchText)
-        })
+        if (searchText === "") {
+            this.setState({
+                actorSearchResults: []
+            })    
+        } else {
+            this.setState({
+                actorSearchResults: this.state.actorSearchResults.concat(searchText)
+            })
+    
+        }
 
     }
 
