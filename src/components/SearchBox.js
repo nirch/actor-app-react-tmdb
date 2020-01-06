@@ -14,11 +14,27 @@ import './SearchBox.css';
 export default class SearchBox extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            searchText: ""
+        }
+
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
+    handleInputChange(ev) {
+        const newSearchText = ev.target.value
+
+        this.setState({
+            searchText: newSearchText
+        });
+
+        this.props.onSearchChange(newSearchText);
+    }
 
     render() {
         const { searchPlaceholder, results } = this.props;
+        const { searchText } = this.state;
 
         const listGroupItems = results.map(result => <ListGroup.Item action>{result}</ListGroup.Item>);
         
@@ -29,7 +45,7 @@ export default class SearchBox extends Component {
 
         return (
             <div className="search-box">
-                <Form.Control type="text" placeholder={searchPlaceholder} />
+                <Form.Control type="text" placeholder={searchPlaceholder} value={searchText} onChange={this.handleInputChange}/>
                 <ListGroup className="search-results">
                     {listGroupItems}
                 </ListGroup>
