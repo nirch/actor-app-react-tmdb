@@ -3,6 +3,7 @@ import SearchBox from '../components/SearchBox'
 import { Container, Row, Col } from 'react-bootstrap';
 import ActorComp from '../components/ActorComp';
 import ActorModel from '../model/ActorModel';
+import Axios from 'axios'
 
 
 export default class ActorsPage extends Component {
@@ -11,7 +12,7 @@ export default class ActorsPage extends Component {
         super(props);
 
         this.state = {
-            actorSearchResults: ["Brad Pitt", "Tom Jhones"],
+            actorSearchResults: [],
             actors: []
         }
 
@@ -36,9 +37,16 @@ export default class ActorsPage extends Component {
                 actorSearchResults: []
             })
         } else {
-            this.setState({
-                actorSearchResults: this.state.actorSearchResults.concat(searchText)
-            })
+            const searchURL = "https://api.themoviedb.org/3/search/person?api_key=53d2ee2137cf3228aefae083c8158855&query=" + searchText;
+            Axios.get(searchURL).then(response => {
+                this.setState({
+                    actorSearchResults: response.data.results.map(result => result.name)
+                })
+            });
+
+            // this.setState({
+            //     actorSearchResults: this.state.actorSearchResults.concat(searchText)
+            // })
 
         }
 
@@ -53,8 +61,8 @@ export default class ActorsPage extends Component {
     render() {
         const { actorSearchResults, actors } = this.state;
 
-        const actorComps = actors.map(actor => 
-            <Col md={4}>
+        const actorComps = actors.map((actor, index) => 
+            <Col md={4} key={index}>
                 <ActorComp actor={actor}/>
             </Col>)
 

@@ -41,7 +41,7 @@ export default class SearchBox extends Component {
         const { searchPlaceholder, results } = this.props;
         const { searchText } = this.state;
 
-        const listGroupItems = results.map((result, index) => <ListGroup.Item data-index={index} action onClick={this.handleSelection}>{result}</ListGroup.Item>);
+        const listGroupItems = results.map((result, index) => <ListGroup.Item key={index} data-index={index} action onClick={this.handleSelection}>{result}</ListGroup.Item>);
         
         // let listGroupItems = [];
         // for (var i = 0; i < results.length; i++) {
