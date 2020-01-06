@@ -11,6 +11,7 @@ export default class ActorsPage extends Component {
             <div>
                 <Container>
                     <SearchBox searchPlaceholder="Search Actor"/>
+                    <h1>bla bla bla</h1>
                 </Container>
             </div>
         )

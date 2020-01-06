@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Form } from 'react-bootstrap';
+import { Form, ListGroup } from 'react-bootstrap';
+import './SearchBox.css';
+
 
 
 // Props
@@ -20,9 +22,16 @@ export default class SearchBox extends Component {
 
 
         return (
-            <div>
+            <div className="search-box">
                 <Form.Control type="text" placeholder={searchPlaceholder} />
-             </div>
+                <ListGroup className="search-results">
+                    <ListGroup.Item>Cras justo odio</ListGroup.Item>
+                    <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+                    <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+                    <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+                    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                </ListGroup>
+            </div>
         )
     }
 }
