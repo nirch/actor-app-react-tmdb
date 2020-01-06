@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SearchBox from '../components/SearchBox'
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import ActorComp from '../components/ActorComp';
 
 
 export default class ActorsPage extends Component {
@@ -56,52 +57,13 @@ export default class ActorsPage extends Component {
                         onSearchChange={this.searchActors} onSelectedResult={this.addActor} />
                     <Row>
                         <Col md={4}>
-                            <Card>
-                                <Card.Img variant="top" src="holder.js/100px180" />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
+                            <ActorComp/>
                         </Col>
                         <Col md={4}>
-                            <Card>
-                                <Card.Img variant="top" src="holder.js/100px180" />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
+                            <ActorComp/>
                         </Col>
                         <Col md={4}>
-                            <Card>
-                                <Card.Img variant="top" src="holder.js/100px180" />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={4}>
-                            <Card>
-                                <Card.Img variant="top" src="holder.js/100px180" />
-                                <Card.Body>
-                                    <Card.Title>Card Title</Card.Title>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the bulk of
-                                        the card's content.
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
+                            <ActorComp/>
                         </Col>
                     </Row>
                 </Container>
