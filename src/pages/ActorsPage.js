@@ -11,7 +11,8 @@ export default class ActorsPage extends Component {
         super(props);
 
         this.state = {
-            actorSearchResults: ["Brad Pitt", "Tom Jhones"]
+            actorSearchResults: ["Brad Pitt", "Tom Jhones"],
+            actors: []
         }
 
         this.searchActors = this.searchActors.bind(this);
@@ -44,12 +45,18 @@ export default class ActorsPage extends Component {
     }
 
     addActor(index) {
-        alert(this.state.actorSearchResults[index]);
+        this.setState({
+            actors: this.state.actors.concat(new ActorModel("Brad Pitt", "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg"))
+        })
     }
 
     render() {
-        const { actorSearchResults } = this.state;
+        const { actorSearchResults, actors } = this.state;
 
+        const actorComps = actors.map(actor => 
+            <Col md={4}>
+                <ActorComp actor={actor}/>
+            </Col>)
 
         return (
             <div>
@@ -57,15 +64,7 @@ export default class ActorsPage extends Component {
                     <SearchBox searchPlaceholder="Search Actor" results={actorSearchResults}
                         onSearchChange={this.searchActors} onSelectedResult={this.addActor} />
                     <Row>
-                        <Col md={4}>
-                            <ActorComp actor={new ActorModel("Brad Pitt", "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg")}/>
-                        </Col>
-                        <Col md={4}>
-                            <ActorComp actor={new ActorModel("Brad Pitt", "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg")}/>
-                        </Col>
-                        <Col md={4}>
-                            <ActorComp actor={new ActorModel("Brad Pitt", "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg")}/>
-                        </Col>
+                        {actorComps}
                     </Row>
                 </Container>
             </div>
