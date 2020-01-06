@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SearchBox from '../components/SearchBox'
 import { Container, Row, Col } from 'react-bootstrap';
 import ActorComp from '../components/ActorComp';
+import ActorModel from '../model/ActorModel';
 
 
 export default class ActorsPage extends Component {
@@ -57,13 +58,13 @@ export default class ActorsPage extends Component {
                         onSearchChange={this.searchActors} onSelectedResult={this.addActor} />
                     <Row>
                         <Col md={4}>
-                            <ActorComp/>
+                            <ActorComp actor={new ActorModel("Brad Pitt", "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg")}/>
                         </Col>
                         <Col md={4}>
-                            <ActorComp/>
+                            <ActorComp actor={new ActorModel("Brad Pitt", "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg")}/>
                         </Col>
                         <Col md={4}>
-                            <ActorComp/>
+                            <ActorComp actor={new ActorModel("Brad Pitt", "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg")}/>
                         </Col>
                     </Row>
                 </Container>
