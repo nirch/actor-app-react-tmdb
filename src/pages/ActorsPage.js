@@ -13,6 +13,7 @@ export default class ActorsPage extends Component {
         }
 
         this.searchActors = this.searchActors.bind(this);
+        this.addActor = this.addActor.bind(this);
     }
 
     searchActors(searchText) {
@@ -40,6 +41,10 @@ export default class ActorsPage extends Component {
 
     }
 
+    addActor(index) {
+        alert( this.state.actorSearchResults[index]);
+    }
+
     render() {
         const { actorSearchResults } = this.state;
         
@@ -48,7 +53,7 @@ export default class ActorsPage extends Component {
             <div>
                 <Container>
                     <SearchBox searchPlaceholder="Search Actor" results={actorSearchResults}
-                                onSearchChange={this.searchActors}/>
+                                onSearchChange={this.searchActors} onSelectedResult={this.addActor}/>
                     <h1>bla bla bla</h1>
                 </Container>
             </div>

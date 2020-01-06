@@ -20,6 +20,7 @@ export default class SearchBox extends Component {
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSelection = this.handleSelection.bind(this);
     }
 
     handleInputChange(ev) {
@@ -32,11 +33,15 @@ export default class SearchBox extends Component {
         this.props.onSearchChange(newSearchText);
     }
 
+    handleSelection(ev) {
+        this.props.onSelectedResult(parseInt(ev.target.getAttribute("data-index")));
+    }
+
     render() {
         const { searchPlaceholder, results } = this.props;
         const { searchText } = this.state;
 
-        const listGroupItems = results.map(result => <ListGroup.Item action>{result}</ListGroup.Item>);
+        const listGroupItems = results.map((result, index) => <ListGroup.Item data-index={index} action onClick={this.handleSelection}>{result}</ListGroup.Item>);
         
         // let listGroupItems = [];
         // for (var i = 0; i < results.length; i++) {
