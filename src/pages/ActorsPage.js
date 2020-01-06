@@ -10,7 +10,7 @@ export default class ActorsPage extends Component {
         return (
             <div>
                 <Container>
-                    <SearchBox/>
+                    <SearchBox searchPlaceholder="Search Actor"/>
                 </Container>
             </div>
         )
