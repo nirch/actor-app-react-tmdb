@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import SearchBox from '../components/SearchBox'
+import { Container } from 'react-bootstrap';
+
 
 export default class ActorsPage extends Component {
     
@@ -7,7 +9,9 @@ export default class ActorsPage extends Component {
     render() {
         return (
             <div>
-                <SearchBox/>
+                <Container>
+                    <SearchBox/>
+                </Container>
             </div>
         )
     }
