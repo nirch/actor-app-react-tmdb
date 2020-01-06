@@ -8,18 +8,39 @@ export default class ActorsPage extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            actorSearchResults: ["Brad Pitt", "Tom Jhones"]
+        }
+
         this.searchActors = this.searchActors.bind(this);
     }
 
     searchActors(searchText) {
-        alert(searchText);
+        
+        // let newActorSearchResults = [];
+        // for (var i = 0; i < this.state.actorSearchResults.length; i++) {
+        //     newActorSearchResults.push(this.state.actorSearchResults[i])
+        // }
+        // newActorSearchResults.push(searchText);
+
+        // this.setState({
+        //     actorSearchResults: newActorSearchResults
+        // })
+
+        this.setState({
+            actorSearchResults: this.state.actorSearchResults.concat(searchText)
+        })
+
     }
 
     render() {
+        const { actorSearchResults } = this.state;
+        
+
         return (
             <div>
                 <Container>
-                    <SearchBox searchPlaceholder="Search Actor" results={["Brad Pitt", "Tom Jhones"]}
+                    <SearchBox searchPlaceholder="Search Actor" results={actorSearchResults}
                                 onSearchChange={this.searchActors}/>
                     <h1>bla bla bla</h1>
                 </Container>
